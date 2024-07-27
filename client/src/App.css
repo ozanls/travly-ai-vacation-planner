@@ -148,7 +148,6 @@ nav {
 	justify-content: space-between;
 	background-color: #2d3236;
 	color: #fff;
-	top: 0;
 	height: 4em;
 	line-height: 4em;
 	width: 100vw;
@@ -236,7 +235,7 @@ nav {
 }
 
 .destination__details__description {
-	width: 40vw;
+	width: 800px;
 }
 
 /* Ratings */
@@ -285,7 +284,7 @@ nav {
 /* Day */
 
 .day {
-	width: 30vw;
+	width: 800px;
 	padding: 2em;
 	border: 1px solid #2d3236;
 	border-radius: 16px;
@@ -356,8 +355,18 @@ nav {
 
 @media only screen and (max-width: 1280px) {
 
+
+	nav{
+		justify-content: center;
+		column-gap: 1em;
+	}
+
+	.nav__attribution__text{
+		display: none;
+	}
+
 	.destination__details__description {
-		width: 80vw;
+		width: 70vw;
 	}
 
 	.location{
