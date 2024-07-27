@@ -12,8 +12,8 @@ Travly uses Gemini, Google Places and TripAdvisor API's to generate a destinatio
 - Node.js
 - npm
 
-1. Inside of ../Travly/api, create a .env file, following the format of .env.example
-2. From ../Travly, run this command:
+1. Inside of ../travly-ai-vacation-planner/api, create a .env file, following the format of .env.example
+2. From ../travly-ai-vacation-planner, run this command:
    
     cd api
 
@@ -26,7 +26,7 @@ Travly uses Gemini, Google Places and TripAdvisor API's to generate a destinatio
    
     npm i
    
-4. To run the application, run this command from ../Travly/client:
+4. To run the application, run this command from ../travly-ai-vacation-planner/client:
    
     npm run dev
 
