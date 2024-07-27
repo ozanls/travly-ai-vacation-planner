@@ -15,24 +15,25 @@ export default function Generation() {
   const [error, setError] = useState(null);
 
 
-  // Fetch data from generative model API
+  // Fetch data from Gemini API
   useEffect(() => {
     if (!submitted) return;
     const fetchData = async () => {
       try {
         const response = await fetch(`http://localhost:9000/gemini?query=${userInput}`);
         if (!response.ok) {
-          const errorMessage = `Error: Network response was not ok. Status: ${response.status} ${response.statusText}`;
+          const errorMessage = `Error: Failed to retrieve Gemini data. Status: ${response.status} ${response.statusText}`;
           console.error(errorMessage);
           setError(errorMessage);
-          throw new Error('Network response was not ok');
+          throw new Error(errorMessage);
         }
         const result = await response.json();
-        //console.log(result);
+        console.log("Gemini Data:");
+        console.log(geminiData);
         setGeminiData(result);
-      } catch (err) {
-        console.error(err);
-        setError(err.message);
+      } catch (error) {
+        console.error(error);
+        setError(error.message);
       }
     };
     fetchData();
@@ -47,20 +48,21 @@ export default function Generation() {
         const query = `${geminiData.destination.city}, ${geminiData.destination.country}`;
         const response = await fetch(`http://localhost:9000/tripadvisor?query=${query}`);
         if (!response.ok) {
-          const errorMessage = `Error: Network response was not ok. Status: ${response.status} ${response.statusText}`;
+          const errorMessage = `Error: Failed to retrieve TripAdvisor data. Status: ${response.status} ${response.statusText}`;
           console.error(errorMessage);
           setError(errorMessage);
-          throw new Error('Network response was not ok');
+          throw new Error(errorMessage);
         }
         const result = await response.json();
-        //console.log(result);
+        console.log("TripAdvisor Data:");
+        console.log(result);
+
         setTripadvisorData(result);
-      } catch (err) {
-        console.error(err);
-        setError(err.message);
+      } catch (error) {
+        console.error(error);
+        setError(error.message);
       }
   };
-    setLoading(false);
     fetchData();
   }, [geminiData]);
 
@@ -68,25 +70,34 @@ export default function Generation() {
   // Fetch places data from Google Places API
   useEffect(() => {
     if (!geminiData) return;
-    const fetchImage = async () => {
+    const fetchData = async () => {
       try {
         const query = `${geminiData.destination.city}, ${geminiData.destination.country}`;
         const response = await fetch(`http://localhost:9000/googleplaces?query=${query}`);
         if (!response.ok) {
-          throw new Error('Failed to fetch image');
+          const errorMessage = `Error: Failed to retrieve Google Places data. Status: ${response.status} ${response.statusText}`;
+          console.error(errorMessage);
+          setError(errorMessage);
+          throw new Error(errorMessage);
         }
         const blob = await response.blob();
-        console.log(blob);
         const url = URL.createObjectURL(blob);
+        console.log("Image Data:");
+        console.log(blob);
         console.log(url);
         setImageData(url);
       } catch (error) {
         setError(error.message);
       }
     };
-    fetchImage();
+    fetchData();
 }, [geminiData]);
-
+ 
+  // Check if loading is complete
+  useEffect(() => { 
+    if (!geminiData || !tripadvisorData || !imageData) return;
+    setLoading(false);
+  }, [geminiData, tripadvisorData, imageData]);
 
     // Handle form submission
   const handleSubmit = async (event) => {
@@ -94,7 +105,17 @@ export default function Generation() {
     setLoading(true);
     setSubmitted(true);
   };
-
+ 
+  // Handle retry button
+  const handleRetry = () => {
+    setGeminiData(null);
+    setTripadvisorData(null);
+    setImageData(null);
+    setUserInput('');
+    setSubmitted(false);
+    setLoading(false);
+    setError(null);
+  }
 
   // Render logic
   return (
@@ -110,12 +131,13 @@ export default function Generation() {
         <Loading />
       )}
       {error &&(
-        <Error error={error}/>
+        <Error error={error} retry={handleRetry}/>
       )}
-      {geminiData && tripadvisorData && !error &&(
+      {geminiData && tripadvisorData && imageData && !error &&(
         <Response
           destination={geminiData.destination}
           image={imageData}
+          retry={handleRetry}
           itinerary={geminiData.itinerary}
           ratings={geminiData.ratings}
           locations={tripadvisorData.data}

@@ -8,8 +8,8 @@ export default function Itinerary (props) {
     let itineraryLength = props.itinerary.length;
     return (
     <>
-    <div className="itinerary">
     <h2 className="container-title">{itineraryLength} day trip to {props.destination.city}</h2>
+    <div className="itinerary">
     {props.itinerary.map((day, index) => (
       <Day 
         key={index}

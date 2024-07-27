@@ -7,8 +7,8 @@ export default function Locations(props) {
     }
     return(
         <>
-        { <div className="locations">
         <h2 className='container-title'>Places to visit in {props.destination.city}</h2>
+        { <div className="locations">
         {props.locations.map((location, index) => (
           <Location 
             key={index}

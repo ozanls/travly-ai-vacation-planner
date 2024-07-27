@@ -1,6 +1,7 @@
-require('dotenv').config()
-var express = require('express');
-var router = express.Router();
+require('dotenv').config();
+const express = require('express');
+const fetch = require('node-fetch'); // Ensure you have node-fetch installed
+const router = express.Router();
 
 router.get('/', async (req, res) => {
   const { query } = req.query;
@@ -12,17 +13,18 @@ router.get('/', async (req, res) => {
     const findPlaceResponse = await fetch(findPlaceUrl, jsonOptions);
     const findPlaceData = await findPlaceResponse.json();
 
-    const photoReference = findPlaceData.candidates[0].photos[0].photo_reference;
-    const photoUrl = `https://maps.googleapis.com/maps/api/place/photo?photoreference=${encodeURIComponent(photoReference)}&key=${googlePlacesApiKey}&maxwidth=700&maxheight=700`;
-    const photoOptions = { method: 'GET', headers: { accept: 'image/*' } };
-
-    try {
-      const photoResponse = await fetch(photoUrl, photoOptions);
-      const photoData = await photoResponse.blob();
-      res.send(photoData);
-    } catch (error) {
-      res.status(500).json({ error: error.message });
+    if (findPlaceData.candidates.length === 0 || !findPlaceData.candidates[0].photos) {
+      return res.status(404).json({ error: 'No photos found for the given place' });
     }
+
+    const photoReference = findPlaceData.candidates[0].photos[0].photo_reference;
+    const photoUrl = `https://maps.googleapis.com/maps/api/place/photo?photoreference=${encodeURIComponent(photoReference)}&key=${googlePlacesApiKey}&maxwidth=1600&maxheight=1600`;
+    const photoResponse = await fetch(photoUrl);
+    
+    if (!photoResponse.ok) {
+      throw new Error('Failed to fetch photo');
+    }
+    photoResponse.body.pipe(res);
 
   } catch (error) {
     res.status(500).json({ error: error.message });

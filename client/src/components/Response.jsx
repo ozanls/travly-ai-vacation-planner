@@ -8,10 +8,10 @@ export default function Response (props) {
   useDocumentTitle(`${props.destination.city}, ${props.destination.country}`);
   return (
     <>
-    <Destination destination={props.destination} image={props.image}/>
+    <Destination destination={props.destination} image={props.image} retry={props.retry}/>
     <Ratings ratings={props.ratings}/>
     <Itinerary destination={props.destination} itinerary={props.itinerary}/>
-    <Locations destination={props.destination}locations={props.locations}/>
+    <Locations destination={props.destination}locations={props.locations}/> 
     </>
   );
 }

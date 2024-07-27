@@ -9,9 +9,9 @@ export default function Day (props){
             <ul className="day__activities">
                 {props.activities.map((activity, index) => (
                     <li key={index} className="day__activity">
-                        <h3 className="day__activity__type">{activity.name} ({activity.type})</h3>
-                        <h3 className="day__activity__address"><FontAwesomeIcon icon={faLocationPin} /> {activity.address}</h3>
-                        <h3 className="day__activity__description">{activity.description}</h3>
+                        <h3 className="day__activity__name">{activity.name} ({activity.type})</h3>
+                        <p className="day__activity__address"><FontAwesomeIcon icon={faLocationPin} /> {activity.address}</p>
+                        <p className="day__activity__description">{activity.description}</p>
                     </li>
                 ))}
             </ul>
