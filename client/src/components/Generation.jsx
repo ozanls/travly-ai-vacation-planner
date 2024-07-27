@@ -4,6 +4,7 @@ import Response from './Response';
 import Loading from './Loading';
 import Error from './Error';
 
+
 export default function Generation() {
   const [geminiData, setGeminiData] = useState(null);
   const [tripadvisorData, setTripadvisorData] = useState(null);

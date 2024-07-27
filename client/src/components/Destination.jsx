@@ -2,7 +2,8 @@ export default function Destination (props) {
 
     const redirectTripadvisor = () => { 
         const query = `${props.destination.city}, ${props.destination.country}`;
-        window.open(`https://www.tripadvisor.ca/Search?q=${encodeURIComponent(query)}`);
+        const url = `https://www.tripadvisor.ca/Search?q=${encodeURIComponent(query)}`;
+        window.open(url, '_blank');
     }
 
     return (

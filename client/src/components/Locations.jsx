@@ -1,20 +1,25 @@
 import Location from './Location';
-import tripadvisorLogo from '../../public/tripadvisor.png';
+import tripadvisorLogo from '/tripadvisor.png';
 
 export default function Locations(props) {
 
     if (!props.locations) {
         return <></>
     }
+
+    const redirectTripadvisor = () => { 
+      window.open(`https://www.tripadvisor.com/`);
+  }
+
     return(
         <>
         <h2 className='container-title'>Places to visit in {props.destination.city}</h2>
         <div className='container-attribution'> 
           <p>Results provided by:</p> 
-          <img className="tripadvisor-logo" src={tripadvisorLogo}></img>
+          <img className="tripadvisor-logo" src={tripadvisorLogo} onClick={redirectTripadvisor} alt="TripAdvisor logo"></img>
         </div>
         { <div className="locations">
-        {props.locations.map((location, index) => (
+        {props.locations.slice(0,9).map((location, index) => (
           <Location 
             key={index}
             name={location.name}

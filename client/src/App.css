@@ -334,6 +334,7 @@ nav {
 /* Locations */
 .tripadvisor-logo{
 	height:20px;
+	cursor: pointer;
 }
   
 .locations {

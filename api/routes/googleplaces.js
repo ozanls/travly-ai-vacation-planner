@@ -23,6 +23,7 @@ router.get('/', async (req, res) => {
     }
 
     const photoReference = findPlaceData.candidates[0].photos[0].photo_reference;
+    const photoAttribution = findPlaceData.candidates[0].photos[0].html_attributions[0];
     const photoUrl = `https://maps.googleapis.com/maps/api/place/photo?photoreference=${encodeURIComponent(photoReference)}&key=${googlePlacesApiKey}&maxwidth=1600&maxheight=1600`;
     const photoResponse = await fetch(photoUrl);
     
