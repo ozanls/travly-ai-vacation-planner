@@ -1,3 +1,8 @@
+/* 
+Using Google Places API
+Docs:  https://developers.google.com/maps/documentation/places/web-service/overview
+*/
+
 require('dotenv').config();
 const express = require('express');
 const fetch = require('node-fetch'); // Ensure you have node-fetch installed

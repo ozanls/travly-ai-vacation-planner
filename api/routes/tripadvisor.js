@@ -1,3 +1,8 @@
+/* 
+Using TripAdvisor API 
+Docs:  https://tripadvisor-content-api.readme.io/reference/overview
+*/
+
 require('dotenv').config()
 var express = require('express')    
 var router = express.Router();

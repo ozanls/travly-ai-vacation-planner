@@ -1,3 +1,9 @@
+/* 
+Using Google Places API
+Docs:  https://ai.google.dev/gemini-api/docs
+*/
+
+
 require('dotenv').config()
 var express = require('express')    
 var router = express.Router();
