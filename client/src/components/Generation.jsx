@@ -44,7 +44,7 @@ export default function Generation() {
     const fetchData = async () => {
       try {
         const query = `${geminiData.destination.city}, ${geminiData.destination.country}`;
-        const response = await fetch(`http://localhost:1000/tripadvisor?query=${query}`);
+        const response = await fetch(`http://localhost:9000/tripadvisor?query=${query}`);
         if (!response.ok) {
           const errorMessage = `Error: Failed to retrieve TripAdvisor data. Status: ${response.status} ${response.statusText}`;
           console.error(errorMessage);
