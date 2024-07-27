@@ -28,8 +28,6 @@ export default function Generation() {
           throw new Error(errorMessage);
         }
         const result = await response.json();
-        console.log("Gemini Data:");
-        console.log(geminiData);
         setGeminiData(result);
       } catch (error) {
         console.error(error);
@@ -46,7 +44,7 @@ export default function Generation() {
     const fetchData = async () => {
       try {
         const query = `${geminiData.destination.city}, ${geminiData.destination.country}`;
-        const response = await fetch(`http://localhost:9000/tripadvisor?query=${query}`);
+        const response = await fetch(`http://localhost:1000/tripadvisor?query=${query}`);
         if (!response.ok) {
           const errorMessage = `Error: Failed to retrieve TripAdvisor data. Status: ${response.status} ${response.statusText}`;
           console.error(errorMessage);
@@ -54,9 +52,6 @@ export default function Generation() {
           throw new Error(errorMessage);
         }
         const result = await response.json();
-        console.log("TripAdvisor Data:");
-        console.log(result);
-
         setTripadvisorData(result);
       } catch (error) {
         console.error(error);
@@ -82,9 +77,6 @@ export default function Generation() {
         }
         const blob = await response.blob();
         const url = URL.createObjectURL(blob);
-        console.log("Image Data:");
-        console.log(blob);
-        console.log(url);
         setImageData(url);
       } catch (error) {
         setError(error.message);
