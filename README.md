@@ -1,5 +1,7 @@
 # Travly
 
+### [travly.xyz](https://www.travly.xyz)
+
 ## Overview
 
 Travly is a React/Express application that uses AI to suggest vacation destinations based on user input. The application prompts the user for their vacation preferences and generates a suggested detailed itinerary, and a list of sites to visit throughout their stay. 
