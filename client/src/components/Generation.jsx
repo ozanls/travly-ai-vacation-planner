@@ -8,6 +8,7 @@ export default function Generation() {
   const [geminiData, setGeminiData] = useState(null);
   const [tripadvisorData, setTripadvisorData] = useState(null);
   const [imageData, setImageData] = useState(null);
+  const [imageAttribution, setImageAttribution] = useState(null);
   const [userInput, setUserInput] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -34,7 +35,7 @@ export default function Generation() {
           throw new Error(errorMessage);
         }
 
-        // If the response is ok, convert the response to JSON
+        // If the response is ok, convert the response to JSON and set geminiData
         const result = await response.json();
         setGeminiData(result);
 
@@ -69,7 +70,7 @@ export default function Generation() {
           throw new Error(errorMessage);
         }
 
-        // If the response is ok, convert the response to JSON
+        // If the response is ok, convert the response to JSON and set tripadvisorData
         const result = await response.json();
         setTripadvisorData(result);
 
@@ -104,12 +105,11 @@ export default function Generation() {
           throw new Error(errorMessage);
         }
 
-        // If the response is ok, convert the response to a blob and create a URL for the image
-        const blob = await response.blob();
-        const url = URL.createObjectURL(blob);
-
-        // Set the image data
-        setImageData(url);
+        // If the response is ok, convert the response to JSON
+        const data = await response.json();
+        // Set the image and attribution data
+        setImageData(data.image);
+        setImageAttribution(data.attribution);
         
         // If there is an error, set the error state
       } catch (error) {
@@ -121,7 +121,7 @@ export default function Generation() {
 
   // Check if loading is complete
   useEffect(() => {
-    
+
     // If there is Gemini data, TripAdvisor data, and image data, set loading to false
     if (!geminiData || !tripadvisorData || !imageData) return;
     setLoading(false);
@@ -160,6 +160,7 @@ export default function Generation() {
       {geminiData && tripadvisorData && imageData && !error && (
         <Response
           destination={geminiData.destination}
+          attribution={imageAttribution}
           image={imageData}
           retry={handleRetry}
           itinerary={geminiData.itinerary}

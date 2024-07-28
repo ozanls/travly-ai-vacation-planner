@@ -16,6 +16,11 @@ export default function Destination (props) {
                 <button className="button-2" onClick={props.retry}>Search Again</button>
                 <button className="button" onClick={redirectTripadvisor}>Discover {props.destination.city}</button>
             </div>
+        {props.attribution &&
+            (<div className="destination__details__attribution">
+                <p>Photo by</p><span dangerouslySetInnerHTML={{ __html: props.attribution }} />
+            </div>
+        )}
         </div> 
     </div>
     </>
