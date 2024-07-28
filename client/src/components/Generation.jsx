@@ -15,14 +15,17 @@ export default function Generation() {
 
   // Fetch data from Gemini API
   useEffect(() => {
+
     // If the form has not been submitted, return
     if (!submitted) return;
     const fetchData = async () => {
       try {
+        
         // Fetch data from Gemini API using the user input as the query
         const response = await fetch(
           `http://localhost:9000/gemini?query=${userInput}`
         );
+
         // If the response is not ok, throw an error
         if (!response.ok) {
           const errorMessage = `Error: Failed to retrieve Gemini data. Status: ${response.status} ${response.statusText}`;
@@ -30,9 +33,11 @@ export default function Generation() {
           setError(errorMessage);
           throw new Error(errorMessage);
         }
+
         // If the response is ok, convert the response to JSON
         const result = await response.json();
         setGeminiData(result);
+
         // If there is an error, set the error state
       } catch (error) {
         console.error(error);
@@ -44,15 +49,18 @@ export default function Generation() {
 
   // Fetch data from TripAdvisor API
   useEffect(() => {
+
     // If there is no Gemini data, return
     if (!geminiData) return;
     const fetchData = async () => {
       try {
+
         // Using the city and country from the Gemini data as the query, fetch data from TripAdvisor API
         const query = `${geminiData.destination.city}, ${geminiData.destination.country}`;
         const response = await fetch(
           `http://localhost:9000/tripadvisor?query=${query}`
         );
+
         // If the response is not ok, throw an error
         if (!response.ok) {
           const errorMessage = `Error: Failed to retrieve TripAdvisor data. Status: ${response.status} ${response.statusText}`;
@@ -60,9 +68,11 @@ export default function Generation() {
           setError(errorMessage);
           throw new Error(errorMessage);
         }
+
         // If the response is ok, convert the response to JSON
         const result = await response.json();
         setTripadvisorData(result);
+
         // If there is an error, set the error state
       } catch (error) {
         console.error(error);
@@ -74,15 +84,18 @@ export default function Generation() {
 
   // Fetch places data from Google Places API
   useEffect(() => {
+
     // If there is no Gemini data, return
     if (!geminiData) return;
     const fetchData = async () => {
       try {
+
         // Using the city and country from the Gemini data as the query, fetch an image from Google Places API
         const query = `${geminiData.destination.city}, ${geminiData.destination.country}`;
         const response = await fetch(
           `http://localhost:9000/googleplaces?query=${query}`
         );
+
         // If the response is not ok, throw an error
         if (!response.ok) {
           const errorMessage = `Error: Failed to retrieve Google Places data. Status: ${response.status} ${response.statusText}`;
@@ -90,11 +103,14 @@ export default function Generation() {
           setError(errorMessage);
           throw new Error(errorMessage);
         }
+
         // If the response is ok, convert the response to a blob and create a URL for the image
         const blob = await response.blob();
         const url = URL.createObjectURL(blob);
+
         // Set the image data
         setImageData(url);
+        
         // If there is an error, set the error state
       } catch (error) {
         setError(error.message);
@@ -105,8 +121,9 @@ export default function Generation() {
 
   // Check if loading is complete
   useEffect(() => {
-    if (!geminiData || !tripadvisorData || !imageData) return;
+    
     // If there is Gemini data, TripAdvisor data, and image data, set loading to false
+    if (!geminiData || !tripadvisorData || !imageData) return;
     setLoading(false);
   }, [geminiData, tripadvisorData, imageData]);
 
