@@ -43,6 +43,7 @@ h3 {
 	align-items: center;
 	column-gap: 0.5em;
 }
+
 /* Buttons */
 
 .button {
@@ -332,11 +333,7 @@ nav {
 }
 
 /* Locations */
-.tripadvisor-logo{
-	height:20px;
-	cursor: pointer;
-}
-  
+
 .locations {
 	display: flex;
 	flex-flow: row wrap;
@@ -368,7 +365,12 @@ nav {
 	font-size: 0.8em;
 }
 
+.tripadvisor-logo{
+	height:20px;
+	cursor: pointer;
+}
 
+/* Screen Size Optimization */
 @media only screen and (max-width: 1280px) {
 
 

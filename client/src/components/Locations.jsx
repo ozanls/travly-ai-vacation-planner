@@ -15,7 +15,7 @@ export default function Locations(props) {
         <>
         <h2 className='container-title'>Places to visit in {props.destination.city}</h2>
         <div className='container-attribution'> 
-          <p>Results provided by:</p> 
+          <p>Results provided by</p> 
           <img className="tripadvisor-logo" src={tripadvisorLogo} onClick={redirectTripadvisor} alt="TripAdvisor logo"></img>
         </div>
         { <div className="locations">
