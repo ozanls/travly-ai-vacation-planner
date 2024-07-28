@@ -2,6 +2,7 @@ import Destination from './Destination';
 import Itinerary from './Itinerary';
 import Locations from './Locations';
 import Ratings from './Ratings';
+import Footer from './Footer'
 import useDocumentTitle from './useDocumentTitle'
 
 export default function Response (props) {
@@ -12,6 +13,7 @@ export default function Response (props) {
     <Ratings ratings={props.ratings}/>
     <Itinerary destination={props.destination} itinerary={props.itinerary}/>
     <Locations destination={props.destination}locations={props.locations}/> 
+    <Footer />
     </>
   );
 }

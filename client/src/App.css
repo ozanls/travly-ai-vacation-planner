@@ -181,6 +181,31 @@ nav {
 	column-gap: 1em;
 }
 
+/* Footer */
+
+footer {
+	display:flex;
+	flex-direction: column;
+	background-color: #2d3236;
+	color: #fff;
+	align-items: center;
+	text-align: center;
+	row-gap: 1em;
+	padding: 1em;
+}
+
+.footer__social-links{
+	display:flex;
+	column-gap: 1em;
+	list-style-type: none;
+}
+
+.footer__social-links__icon {
+	width: 32px;
+	height: 32px;
+	color: #fff;
+	filter:invert(100%);
+}
 /* Question */
 
 .question-container {
@@ -389,7 +414,7 @@ nav {
 }
 
 .tripadvisor-logo{
-	height:20px;
+	height:25px;
 	cursor: pointer;
 }
 
@@ -429,7 +454,6 @@ nav {
 		left: auto;
 		right:auto;
 	}
-
 
 	.day {
 		width: 65vw;

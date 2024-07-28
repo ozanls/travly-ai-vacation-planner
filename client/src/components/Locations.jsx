@@ -1,5 +1,5 @@
 import Location from './Location';
-import tripadvisorLogo from '/tripadvisor.png';
+import tripadvisorLogo from '/tripadvisor.svg';
 
 export default function Locations(props) {
 
