@@ -8,17 +8,17 @@ export default function Footer() {
             <ul className="footer__social-links">
                 <li>
                     <a href="https://github.com/ozanls" target="_blank" rel="noreferrer">                    
-                        <img class="footer__social-links__icon" src='./github.svg' ></img>
+                        <img className="footer__social-links__icon" src='./github.svg' ></img>
                     </a>
                 </li>
                 <li>
                     <a href="https://www.linkedin.com/in/ozanlago/" target="_blank" rel="noreferrer">                    
-                        <img class="footer__social-links__icon" src='./linkedin.svg' ></img>
+                        <img className="footer__social-links__icon" src='./linkedin.svg' ></img>
                     </a>
                 </li>
                 <li>
                     <a href="https://x.com/ozanls" target="_blank" rel="noreferrer">                    
-                        <img class="footer__social-links__icon" src='./x.svg' ></img>
+                        <img className="footer__social-links__icon" src='./x.svg' ></img>
                     </a>
                 </li>
             </ul>

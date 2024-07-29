@@ -13,6 +13,7 @@ export default function Generation() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const apiUrl = import.meta.env.REACT_APP_API_URL || "http://localhost:9000";
 
   // Fetch data from Gemini API
   useEffect(() => {
@@ -24,7 +25,7 @@ export default function Generation() {
         
         // Fetch data from Gemini API using the user input as the query
         const response = await fetch(
-          `http://localhost:9000/gemini?query=${userInput}`
+          `${apiUrl}/gemini?query=${userInput}`
         );
 
         // If the response is not ok, throw an error
@@ -59,7 +60,7 @@ export default function Generation() {
         // Using the city and country from the Gemini data as the query, fetch data from TripAdvisor API
         const query = `${geminiData.destination.city}, ${geminiData.destination.country}`;
         const response = await fetch(
-          `http://localhost:9000/tripadvisor?query=${query}`
+          `${apiUrl}/tripadvisor?query=${query}`
         );
 
         // If the response is not ok, throw an error
@@ -94,7 +95,7 @@ export default function Generation() {
         // Using the city and country from the Gemini data as the query, fetch an image from Google Places API
         const query = `${geminiData.destination.city}, ${geminiData.destination.country}`;
         const response = await fetch(
-          `http://localhost:9000/googleplaces?query=${query}`
+          `${apiUrl}/googleplaces?query=${query}`
         );
 
         // If the response is not ok, throw an error
