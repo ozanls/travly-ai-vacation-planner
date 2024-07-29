@@ -33,7 +33,7 @@ router.get('/', async (req, res) => {
           - 'type': The type of activity.
           - 'name': The name of the place or activity.
           - 'description': A brief description of the activity.
-          - 'address': The location address (If no address is available, write 'No Address Available').
+          - 'address': The location address (If no address is available, don't include this).
 
     If you are unable to provide a destination or detailed itinerary based on the user's input, suggest a random destination and itinerary.`,
     generationConfig: { responseMimeType: "application/json" }

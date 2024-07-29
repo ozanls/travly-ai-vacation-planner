@@ -29,6 +29,12 @@ h3 {
 	font-weight: normal;
 }
 
+.location-icon{
+	color: #dc3545;
+}
+
+/* Container */
+
 .container-title {
 	font-size: 1.5em;
 	font-weight: bold;
@@ -364,6 +370,10 @@ footer {
 	row-gap: 1em;
 	display: flex;
 	flex-direction: column;
+}
+
+.day__activity__name {
+	font-weight: bold;
 }
 
 .day__activity__address {
