@@ -13,11 +13,11 @@ export default function Generation() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const apiUrl = import.meta.env.REACT_APP_API_URL || "http://localhost:9000";
+  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:9000";
 
   // Fetch data from Gemini API
   useEffect(() => {
-
+    
     // If the form has not been submitted, return
     if (!submitted) return;
     const fetchData = async () => {
