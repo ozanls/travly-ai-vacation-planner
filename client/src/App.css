@@ -261,6 +261,7 @@ footer {
 	color: aliceblue;
 	background-color: #007BFF;
 	background: center / cover no-repeat;
+	position: inherit;
 }
 
 .destination__details {
@@ -268,7 +269,7 @@ footer {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	text-align: left;
+	text-align: justify;
 	margin: 0 auto;
 	backdrop-filter: blur(12px) brightness(0.75) contrast(0.9);
 	padding: 4em 0em 4em 0em;
@@ -286,7 +287,7 @@ footer {
 }
 
 .destination__details__attribution{
-	position: fixed;
+	position: absolute;
 	font-size: 0.8em;
 	align-items: center;
 	bottom: 1em;
@@ -405,16 +406,6 @@ footer {
 	overflow:hidden;
 }
 
-.location1 { grid-area: 1 / 1 / 2 / 2; }
-.location2 { grid-area: 1 / 2 / 2 / 3; }
-.location3 { grid-area: 1 / 3 / 2 / 4; }
-.location4 { grid-area: 2 / 1 / 3 / 2; }
-.location5 { grid-area: 2 / 2 / 3 / 3; }
-.location6 { grid-area: 2 / 3 / 3 / 4; }
-.location7 { grid-area: 3 / 1 / 4 / 2; }
-.location8 { grid-area: 3 / 2 / 4 / 3; }
-.location9 { grid-area: 3 / 3 / 4 / 4; } 
-
 .location__name {
 	font-size: 1em;
 	font-weight: bold;
@@ -482,10 +473,6 @@ footer {
 	.question{
 		width: 90vw;
 		row-gap: 1em;
-	}
-
-	.destination__details{
-		text-align: justify;
 	}
 
 	.destination__details__description {

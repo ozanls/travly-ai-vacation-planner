@@ -18,7 +18,7 @@ export default function Destination (props) {
             </div>
         {props.attribution &&
             (<div className="destination__details__attribution">
-                <p>Photo by</p><span dangerouslySetInnerHTML={{ __html: props.attribution }} />
+                <p>Photo by <span dangerouslySetInnerHTML={{ __html: props.attribution }} /></p>
             </div>
         )}
         </div> 
