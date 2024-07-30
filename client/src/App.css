@@ -291,6 +291,7 @@ nav {
 
 .rating {
 	display: flex;
+	justify-content: center;
 	flex-direction: column;
 	font-weight: bold;
 	border-radius: 8px;
