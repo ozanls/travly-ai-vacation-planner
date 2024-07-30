@@ -483,7 +483,11 @@ footer {
 	}
 
 	.question__description{
-		text-align: justify;
+		text-align: center;
+	}
+
+	.destination__name {
+		max-width: 90vw;
 	}
 
 	.destination__details__description {
