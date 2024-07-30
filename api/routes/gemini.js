@@ -21,10 +21,10 @@ router.get('/', async (req, res) => {
     // Prompt for the Gemini model
     systemInstruction: `You will receive a prompt from the user detailing their vacation preferences, including budget, duration, weather preferences, activities they enjoy, and any special requirements. Based on this input, generate a response suggesting a destination and providing a detailed itinerary. The response should include the following properties:
 
-    1. 'destination': An object with 'city', 'country', and 'description' (a 2-3 sentence description explaining why this destination is suitable based on the user's preferences, as well as a breakdown of estimatedCost.
+    1. 'destination': An object with 'city', 'country', and 'description' (a 2-3 sentence description explaining why this destination is suitable based on the user's preferences, as well as a breakdown of estimatedCost. Instead of 'United Kingdom', specify which country in the United Kingdom. Abbreviate the United States to USA).
 
-    2. 'ratings': An array of up to 5 attributes, based on the users destination preferences. Each object should include:
-    - 'name' : Name of the attribute
+    2. 'ratings': An array of 4 attributes that best match the users destination preferences. Each object should include:
+    - 'name' : Name of the attribute (1 word)
     - 'value': An accurate rating on a scale from 1 to 10, based on how well the destination meets the user's preferences.
 
     3. 'itinerary': An array of objects, each representing a day of the trip. Each object should include:
