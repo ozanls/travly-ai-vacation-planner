@@ -241,7 +241,6 @@ nav {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	text-align: justify;
 	position: relative;
 	margin: 0 auto;
 	backdrop-filter: blur(12px) brightness(0.75) contrast(0.9);
@@ -255,8 +254,13 @@ nav {
 	column-gap: 1em;
 }
 
+.destination__details__name {
+	text-align: center;
+}
+
 .destination__details__description {
 	width: 700px;
+	text-align: justify;
 }
 
 .destination__details__attribution{
@@ -475,6 +479,10 @@ footer {
 	.question{
 		width: 90vw;
 		row-gap: 1em;
+	}
+
+	.question__description{
+		text-align: justify;
 	}
 
 	.destination__details__description {
