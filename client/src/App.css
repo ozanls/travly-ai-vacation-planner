@@ -187,33 +187,6 @@ nav {
 	column-gap: 1em;
 }
 
-/* Footer */
-
-footer {
-	display:flex;
-	flex-direction: column;
-	background-color: #2d3236;
-	color: #fff;
-	align-items: center;
-	row-gap: 1em;
-	padding: 1em;
-	text-align: center;
-	margin-top: 1em;
-}
-
-.footer__social-links{
-	display:flex;
-	column-gap: 1em;
-	list-style-type: none;
-	padding: 0;
-}
-
-.footer__social-links__icon {
-	width: 32px;
-	height: 32px;
-	color: #fff;
-	filter:invert(100%);
-}
 /* Question */
 
 .question-container {
@@ -261,7 +234,6 @@ footer {
 	color: aliceblue;
 	background-color: #007BFF;
 	background: center / cover no-repeat;
-	position: inherit;
 }
 
 .destination__details {
@@ -270,6 +242,7 @@ footer {
 	align-items: center;
 	justify-content: center;
 	text-align: justify;
+	position: relative;
 	margin: 0 auto;
 	backdrop-filter: blur(12px) brightness(0.75) contrast(0.9);
 	padding: 4em 0em 4em 0em;
@@ -421,6 +394,34 @@ footer {
 	cursor: pointer;
 }
 
+/* Footer */
+
+footer {
+	display:flex;
+	flex-direction: column;
+	background-color: #2d3236;
+	color: #fff;
+	align-items: center;
+	row-gap: 1em;
+	padding: 1em;
+	text-align: center;
+	margin-top: 1em;
+}
+
+.footer__social-links{
+	display:flex;
+	column-gap: 1em;
+	list-style-type: none;
+	padding: 0;
+}
+
+.footer__social-links__icon {
+	width: 32px;
+	height: 32px;
+	color: #fff;
+	filter:invert(100%);
+}
+
 /* Screen Size Optimization */
 @media only screen and (max-width: 1280px) {
 
@@ -437,16 +438,17 @@ footer {
 		padding: 1em;
 		height:fit-content;
 	}
+
 }
 
 
 @media only screen and (max-width: 768px) {
 
-	.container-title {
+	.question__header, .container-title {
 		font-size: 1.2em;
 	}
 
-	.destination__details__description, .rating__value, .day__activity__name, .day__activity__description, .container-attribution {
+	.question__description, .question__form__textarea, .destination__details__description, .rating__value, .day__activity__name, .day__activity__description, .container-attribution {
 		font-size: 0.9em;
 	}
 
@@ -491,5 +493,10 @@ footer {
 
 	.location {
 		margin: 0.5em;
-		}
+	}
+
+	.footer__social-links__icon {
+		width: 16px;
+		height: 16px;
+	}
 }
