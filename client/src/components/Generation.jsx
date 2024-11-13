@@ -17,16 +17,12 @@ export default function Generation() {
 
   // Fetch data from Gemini API
   useEffect(() => {
-    
     // If the form has not been submitted, return
     if (!submitted) return;
     const fetchData = async () => {
       try {
-        
         // Fetch data from Gemini API using the user input as the query
-        const response = await fetch(
-          `${apiUrl}/gemini?query=${userInput}`
-        );
+        const response = await fetch(`${apiUrl}/gemini?query=${userInput}`);
 
         // If the response is not ok, throw an error
         if (!response.ok) {
@@ -51,17 +47,13 @@ export default function Generation() {
 
   // Fetch data from TripAdvisor API
   useEffect(() => {
-
     // If there is no Gemini data, return
     if (!geminiData) return;
     const fetchData = async () => {
       try {
-
         // Using the city and country from the Gemini data as the query, fetch data from TripAdvisor API
         const query = `${geminiData.destination.city}, ${geminiData.destination.country}`;
-        const response = await fetch(
-          `${apiUrl}/tripadvisor?query=${query}`
-        );
+        const response = await fetch(`${apiUrl}/tripadvisor?query=${query}`);
 
         // If the response is not ok, throw an error
         if (!response.ok) {
@@ -86,17 +78,13 @@ export default function Generation() {
 
   // Fetch places data from Google Places API
   useEffect(() => {
-
     // If there is no Gemini data, return
     if (!geminiData) return;
     const fetchData = async () => {
       try {
-
         // Using the city and country from the Gemini data as the query, fetch an image from Google Places API
         const query = `${geminiData.destination.city}, ${geminiData.destination.country}`;
-        const response = await fetch(
-          `${apiUrl}/googleplaces?query=${query}`
-        );
+        const response = await fetch(`${apiUrl}/googleplaces?query=${query}`);
 
         // If the response is not ok, throw an error
         if (!response.ok) {
@@ -111,7 +99,7 @@ export default function Generation() {
         // Set the image and attribution data
         setImageData(data.image);
         setImageAttribution(data.attribution);
-        
+
         // If there is an error, set the error state
       } catch (error) {
         setError(error.message);
@@ -122,7 +110,6 @@ export default function Generation() {
 
   // Check if loading is complete
   useEffect(() => {
-
     // If there is Gemini data, TripAdvisor data, and image data, set loading to false
     if (!geminiData || !tripadvisorData || !imageData) return;
     setLoading(false);

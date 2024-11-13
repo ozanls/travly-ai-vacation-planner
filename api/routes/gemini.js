@@ -3,20 +3,19 @@ Using Google Places API
 Docs:  https://ai.google.dev/gemini-api/docs
 */
 
-require('dotenv').config()
-var express = require('express')    
+require("dotenv").config();
+var express = require("express");
 var router = express.Router();
 
 // GET request to Gemini AI API
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   const { query } = req.query;
   const { GoogleGenerativeAI } = require("@google/generative-ai");
   const geminiApiKey = process.env.GEMINI_API_KEY;
   const genAI = new GoogleGenerativeAI(geminiApiKey);
   const model = await genAI.getGenerativeModel({
-    
     // Gemini model to use
-    model: 'gemini-1.5-flash',
+    model: "gemini-1.5-flash",
 
     // Prompt for the Gemini model
     systemInstruction: `You will receive a prompt from the user detailing their vacation preferences, including budget, duration, weather preferences, activities they enjoy, and any special requirements. Based on this input, generate a response suggesting a destination and providing a detailed itinerary. The response should include the following properties:
@@ -36,7 +35,7 @@ router.get('/', async (req, res) => {
           - 'address': The location address (If no address is available, don't include this).
 
     If you are unable to provide a destination or detailed itinerary based on the user's input, suggest a random destination and itinerary.`,
-    generationConfig: { responseMimeType: "application/json" }
+    generationConfig: { responseMimeType: "application/json" },
   });
 
   // Generate content using the user input as the query
@@ -47,7 +46,8 @@ router.get('/', async (req, res) => {
 
     // If there is an error, set the error state
   } catch (err) {
-    console.error("Failed to generate content:", err);  }
+    console.error("Failed to generate content:", err);
+  }
 });
 
 module.exports = router;
